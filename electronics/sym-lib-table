@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name 74HC4059)(type Legacy)(uri ${KIPRJMOD}/lib/74HC4059.lib)(options "")(descr ""))
+  (lib (name wm8750)(type Legacy)(uri ${KIPRJMOD}/lib/wm8750.lib)(options "")(descr ""))
+  (lib (name LM567)(type Legacy)(uri ${KIPRJMOD}/lib/LM567.lib)(options "")(descr ""))
+  (lib (name 74LVC74)(type Legacy)(uri ${KIPRJMOD}/lib/74LVC74.lib)(options "")(descr ""))
+  (lib (name av2-8)(type Legacy)(uri ${KIPRJMOD}/lib/av2-8.lib)(options "")(descr ""))
+)

@@ -1,4 +1,4 @@
-update=Sat 13 Nov 2021 19:34:33
+update=Mon 15 Nov 2021 11:46:24
 version=1
 last_client=kicad
 [general]
@@ -32,15 +32,15 @@ AllowMicroVias=0
 AllowBlindVias=0
 RequireCourtyardDefinitions=0
 ProhibitOverlappingCourtyards=1
-MinTrackWidth=0.1524
-MinViaDiameter=0.7999999999999999
-MinViaDrill=0.5
+MinTrackWidth=0.15
+MinViaDiameter=0.7
+MinViaDrill=0.4
 MinMicroViaDiameter=0.5
 MinMicroViaDrill=0.09999999999999999
 MinHoleToHole=0.25
-TrackWidth1=0.2
-ViaDiameter1=0.9
-ViaDrill1=0.6
+TrackWidth1=0.15
+ViaDiameter1=0.7
+ViaDrill1=0.4
 dPairWidth1=0.2
 dPairGap1=0.25
 dPairViaGap1=0.25
@@ -51,8 +51,8 @@ SilkTextSizeThickness=0.15
 SilkTextItalic=0
 SilkTextUpright=1
 CopperLineWidth=0.09999999999999999
-CopperTextSizeV=1
-CopperTextSizeH=1
+CopperTextSizeV=1.5
+CopperTextSizeH=1.5
 CopperTextThickness=0.3
 CopperTextItalic=0
 CopperTextUpright=1
@@ -67,7 +67,7 @@ OthersTextUpright=1
 SolderMaskClearance=0
 SolderMaskMinWidth=0
 SolderPasteClearance=0
-SolderPasteRatio=0
+SolderPasteRatio=-0
 [pcbnew/Layer.F.Cu]
 Name=F.Cu
 Type=0
@@ -223,11 +223,11 @@ Enabled=1
 [pcbnew/Layer.Edge.Cuts]
 Enabled=1
 [pcbnew/Layer.Margin]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.B.CrtYd]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.F.CrtYd]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.B.Fab]
 Enabled=0
 [pcbnew/Layer.F.Fab]
@@ -237,10 +237,10 @@ Enabled=0
 [pcbnew/Netclasses]
 [pcbnew/Netclasses/Default]
 Name=Default
-Clearance=0.2
-TrackWidth=0.2
-ViaDiameter=0.9
-ViaDrill=0.6
+Clearance=0.15
+TrackWidth=0.15
+ViaDiameter=0.7
+ViaDrill=0.4
 uViaDiameter=0.5
 uViaDrill=0.1
 dPairWidth=0.2

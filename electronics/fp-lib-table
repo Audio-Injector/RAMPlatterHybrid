@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name AV2-8)(type KiCad)(uri ${KIPRJMOD}/lib/AV2-8.pretty)(options "")(descr ""))
+  (lib (name 40pin.SMD.rev)(type KiCad)(uri ${KIPRJMOD}/lib/40pin.SMD.rev.pretty)(options "")(descr ""))
 )

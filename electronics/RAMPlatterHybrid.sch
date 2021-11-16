@@ -326,8 +326,6 @@ F 3 "" H 1750 3350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1850 6000 1850 6050
-Wire Wire Line
-	1950 6000 1850 6000
 $Comp
 L power:+3V3 #PWR09
 U 1 1 618D1F1D
@@ -340,26 +338,14 @@ F 3 "" H 1850 6050 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2450 3400 2350 3400
-Connection ~ 2350 3400
-Connection ~ 1750 3400
-Wire Wire Line
 	1850 3400 1750 3400
 Connection ~ 1850 3400
 Wire Wire Line
 	1950 3400 1850 3400
 Connection ~ 1950 3400
-Wire Wire Line
-	2050 3400 1950 3400
-Connection ~ 2050 3400
-Wire Wire Line
-	2150 3400 2050 3400
 Connection ~ 2150 3400
-Connection ~ 1850 6000
 Wire Wire Line
 	2250 3400 2150 3400
-Wire Wire Line
-	2350 3400 2250 3400
 Connection ~ 2250 3400
 Text Label 1250 5300 2    50   ~ 0
 SDA
@@ -617,17 +603,6 @@ F 3 "~" H 3900 3950 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L Connector:Raspberry_Pi_2_3 J1
-U 1 1 618CDFEC
-P 2050 4700
-F 0 "J1" H 1400 6000 50  0000 C CNN
-F 1 "Raspberry_Pi_2_3" H 1900 4600 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical" H 2050 4700 50  0001 C CNN
-F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 2050 4700 50  0001 C CNN
-	1    2050 4700
-	-1   0    0    1   
-$EndComp
-$Comp
 L av2-8:AV2-8.4-10 U4
 U 1 1 619AA4DB
 P 7400 5550
@@ -643,7 +618,7 @@ L Device:R R7
 U 1 1 619BCC1E
 P 3600 5900
 F 0 "R7" V 3393 5900 50  0000 C CNN
-F 1 "47R" V 3484 5900 50  0000 C CNN
+F 1 "75R" V 3484 5900 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 5900 50  0001 C CNN
 F 3 "~" H 3600 5900 50  0001 C CNN
 	1    3600 5900
@@ -654,7 +629,7 @@ L Device:R R8
 U 1 1 619BC7CB
 P 3600 6000
 F 0 "R8" V 3393 6000 50  0000 C CNN
-F 1 "47R" V 3484 6000 50  0000 C CNN
+F 1 "75R" V 3484 6000 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 6000 50  0001 C CNN
 F 3 "~" H 3600 6000 50  0001 C CNN
 	1    3600 6000
@@ -665,7 +640,7 @@ L Device:R R9
 U 1 1 619BC017
 P 3600 6200
 F 0 "R9" V 3393 6200 50  0000 C CNN
-F 1 "47R" V 3484 6200 50  0000 C CNN
+F 1 "75R" V 3484 6200 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 6200 50  0001 C CNN
 F 3 "~" H 3600 6200 50  0001 C CNN
 	1    3600 6200
@@ -676,7 +651,7 @@ L Device:R R10
 U 1 1 619BAA98
 P 3600 6300
 F 0 "R10" V 3393 6300 50  0000 C CNN
-F 1 "47R" V 3484 6300 50  0000 C CNN
+F 1 "75R" V 3484 6300 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 6300 50  0001 C CNN
 F 3 "~" H 3600 6300 50  0001 C CNN
 	1    3600 6300
@@ -709,8 +684,8 @@ L Device:C_Polarized C13
 U 1 1 618F0ACE
 P 5750 5700
 F 0 "C13" V 6005 5700 50  0000 C CNN
-F 1 "1u" V 5914 5700 50  0000 C CNN
-F 2 "" H 5788 5550 50  0001 C CNN
+F 1 "1u NP" V 5914 5700 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_5x5.3" H 5788 5550 50  0001 C CNN
 F 3 "~" H 5750 5700 50  0001 C CNN
 	1    5750 5700
 	0    -1   1    0   
@@ -731,8 +706,8 @@ L Device:C_Polarized C14
 U 1 1 618F4570
 P 5750 5500
 F 0 "C14" V 5500 5500 50  0000 C CNN
-F 1 "1u" V 5600 5500 50  0000 C CNN
-F 2 "" H 5788 5350 50  0001 C CNN
+F 1 "1u NP" V 5600 5500 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_5x5.3" H 5788 5350 50  0001 C CNN
 F 3 "~" H 5750 5500 50  0001 C CNN
 	1    5750 5500
 	0    -1   1    0   
@@ -753,8 +728,8 @@ L Device:C_Polarized C11
 U 1 1 61901DBB
 P 3600 5050
 F 0 "C11" V 3345 5050 50  0000 C CNN
-F 1 "1u" V 3436 5050 50  0000 C CNN
-F 2 "" H 3638 4900 50  0001 C CNN
+F 1 "1u NP" V 3436 5050 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_5x5.3" H 3638 4900 50  0001 C CNN
 F 3 "~" H 3600 5050 50  0001 C CNN
 	1    3600 5050
 	0    1    -1   0   
@@ -764,8 +739,8 @@ L Device:C_Polarized C12
 U 1 1 619032A6
 P 3600 4850
 F 0 "C12" V 3345 4850 50  0000 C CNN
-F 1 "1u" V 3436 4850 50  0000 C CNN
-F 2 "" H 3638 4700 50  0001 C CNN
+F 1 "1u NP" V 3436 4850 50  0000 C CNN
+F 2 "Capacitor_SMD:CP_Elec_5x5.3" H 3638 4700 50  0001 C CNN
 F 3 "~" H 3600 4850 50  0001 C CNN
 	1    3600 4850
 	0    1    -1   0   
@@ -776,7 +751,7 @@ U 1 1 6190825E
 P 3200 7100
 F 0 "C10" H 3318 7146 50  0000 L CNN
 F 1 "10u" H 3318 7055 50  0000 L CNN
-F 2 "" H 3238 6950 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.3" H 3238 6950 50  0001 C CNN
 F 3 "~" H 3200 7100 50  0001 C CNN
 	1    3200 7100
 	1    0    0    1   
@@ -809,7 +784,7 @@ U 1 1 6190ED97
 P 2750 6650
 F 0 "C8" H 2868 6696 50  0000 L CNN
 F 1 "10u" H 2868 6605 50  0000 L CNN
-F 2 "" H 2788 6500 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.3" H 2788 6500 50  0001 C CNN
 F 3 "~" H 2750 6650 50  0001 C CNN
 	1    2750 6650
 	1    0    0    1   
@@ -864,7 +839,7 @@ U 1 1 619BA82D
 P 6200 4650
 F 0 "C16" H 6318 4696 50  0000 L CNN
 F 1 "10u" H 6318 4605 50  0000 L CNN
-F 2 "" H 6238 4500 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.3" H 6238 4500 50  0001 C CNN
 F 3 "~" H 6200 4650 50  0001 C CNN
 	1    6200 4650
 	1    0    0    1   
@@ -1204,9 +1179,6 @@ F 3 "" H 7450 2700 50  0001 C CNN
 $EndComp
 NoConn ~ 8700 2700
 Wire Wire Line
-	10650 2800 10650 3100
-Connection ~ 10650 2800
-Wire Wire Line
 	10650 2800 10550 2800
 Wire Wire Line
 	10650 2700 10650 2800
@@ -1389,12 +1361,7 @@ Wire Wire Line
 Wire Wire Line
 	10550 750  10550 1100
 Wire Wire Line
-	10550 3300 10800 3300
-Wire Wire Line
-	10800 3300 10800 3200
-Connection ~ 10800 3200
-Wire Wire Line
-	10550 3200 10800 3200
+	10550 3300 10650 3300
 $Comp
 L power:+3V3 #PWR04
 U 1 1 618CC9A4
@@ -1422,9 +1389,6 @@ Wire Wire Line
 Wire Wire Line
 	10800 2900 10800 2600
 Wire Wire Line
-	10800 3200 10800 2900
-Connection ~ 10800 2900
-Wire Wire Line
 	10550 2900 10800 2900
 $Comp
 L Device:C C22
@@ -1447,6 +1411,40 @@ Wire Wire Line
 Wire Wire Line
 	9750 3800 9750 3500
 Connection ~ 9750 3800
+Text Label 3400 6800 0    50   ~ 0
+AVDD
+$Comp
+L Jumper:SolderJumper_2_Bridged JP3
+U 1 1 6195E0BA
+P 5950 7150
+F 0 "JP3" H 5950 7355 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 5800 7050 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 5950 7150 50  0001 C CNN
+F 3 "~" H 5950 7150 50  0001 C CNN
+	1    5950 7150
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5600 7000 5950 7000
+Connection ~ 5600 7000
+Wire Wire Line
+	5950 7300 5950 7400
+Wire Wire Line
+	5950 7400 5600 7400
+Connection ~ 5600 7400
+Wire Wire Line
+	10650 3100 10650 3200
+Wire Wire Line
+	10650 3100 10800 3100
+Wire Wire Line
+	10800 3100 10800 2900
+Connection ~ 10650 3100
+Connection ~ 10800 2900
+Wire Wire Line
+	10550 3200 10650 3200
+Connection ~ 10650 3200
+Wire Wire Line
+	10650 3200 10650 3300
 $Comp
 L Timer:NE567 U9
 U 1 1 619FBBE5
@@ -1466,7 +1464,7 @@ U 1 1 61A0E20C
 P 9250 5700
 F 0 "C24" H 9365 5746 50  0000 L CNN
 F 1 "100n" H 9365 5655 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 9288 5550 50  0001 C CNN
+F 2 "" H 9288 5550 50  0001 C CNN
 F 3 "~" H 9250 5700 50  0001 C CNN
 	1    9250 5700
 	-1   0    0    1   
@@ -1494,7 +1492,7 @@ U 1 1 61A33E22
 P 10750 4900
 F 0 "R15" V 10543 4900 50  0000 C CNN
 F 1 "1k" V 10634 4900 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 10680 4900 50  0001 C CNN
+F 2 "" V 10680 4900 50  0001 C CNN
 F 3 "~" H 10750 4900 50  0001 C CNN
 	1    10750 4900
 	1    0    0    -1  
@@ -1575,7 +1573,7 @@ U 1 1 619FFDBB
 P 9100 5400
 F 0 "R14" V 8893 5400 50  0000 C CNN
 F 1 "10k" V 8984 5400 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9030 5400 50  0001 C CNN
+F 2 "" V 9030 5400 50  0001 C CNN
 F 3 "~" H 9100 5400 50  0001 C CNN
 	1    9100 5400
 	1    0    0    -1  
@@ -1590,20 +1588,194 @@ U 1 1 61A2A6B6
 P 9100 5100
 F 0 "R13" V 8893 5100 50  0000 C CNN
 F 1 "1k" V 8984 5100 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9030 5100 50  0001 C CNN
+F 2 "" V 9030 5100 50  0001 C CNN
 F 3 "~" H 9100 5100 50  0001 C CNN
 	1    9100 5100
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C22
+L Device:C C26
 U 1 1 61A3FC52
 P 8800 5700
-F 0 "C22" H 8915 5746 50  0000 L CNN
+F 0 "C26" H 8915 5746 50  0000 L CNN
 F 1 "10n" H 8915 5655 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 8838 5550 50  0001 C CNN
+F 2 "" H 8838 5550 50  0001 C CNN
 F 3 "~" H 8800 5700 50  0001 C CNN
 	1    8800 5700
 	-1   0    0    1   
 $EndComp
+$Comp
+L Connector:Raspberry_Pi_2_3 J2
+U 1 1 619F1A1C
+P 250 4700
+F 0 "J2" H -400 6000 50  0000 C CNN
+F 1 "Raspberry_Pi_2_3" H 100 4600 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical" H 250 4700 50  0001 C CNN
+F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 250 4700 50  0001 C CNN
+	1    250  4700
+	1    0    0    1   
+$EndComp
+$Comp
+L power:+3V3 #PWR0119
+U 1 1 61A0BE6F
+P 450 6000
+F 0 "#PWR0119" H 450 5850 50  0001 C CNN
+F 1 "+3V3" H 500 6100 50  0000 L CNN
+F 2 "" H 450 6000 50  0001 C CNN
+F 3 "" H 450 6000 50  0001 C CNN
+	1    450  6000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	50   6000 150  6000
+Connection ~ 50   6000
+$Comp
+L power:+5V #PWR0120
+U 1 1 61A185D5
+P 50 6000
+F 0 "#PWR0120" H 50  5850 50  0001 C CNN
+F 1 "+5V" H 65  6173 50  0000 C CNN
+F 2 "" H 50  6000 50  0001 C CNN
+F 3 "" H 50  6000 50  0001 C CNN
+	1    50   6000
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	1050 3900 1250 3900
+Wire Wire Line
+	1250 4000 1050 4000
+Wire Wire Line
+	1050 4200 1250 4200
+Wire Wire Line
+	1250 4300 1050 4300
+Wire Wire Line
+	1050 4400 1250 4400
+Wire Wire Line
+	1250 4500 1050 4500
+Wire Wire Line
+	1050 4600 1250 4600
+Wire Wire Line
+	1250 4800 1050 4800
+Wire Wire Line
+	1050 4900 1250 4900
+Wire Wire Line
+	1250 5000 1050 5000
+Wire Wire Line
+	1050 5200 1250 5200
+Wire Wire Line
+	1250 5300 1050 5300
+Wire Wire Line
+	1050 5500 1250 5500
+Wire Wire Line
+	1250 5600 1050 5600
+NoConn ~ -550 4100
+NoConn ~ -550 4700
+NoConn ~ -550 4800
+NoConn ~ -550 4900
+NoConn ~ -550 5100
+Connection ~ 2050 3400
+Wire Wire Line
+	2150 3400 2050 3400
+Wire Wire Line
+	2050 3400 1950 3400
+Connection ~ 1750 3400
+Connection ~ 2350 3400
+Wire Wire Line
+	2350 3400 2250 3400
+Wire Wire Line
+	2450 3400 2350 3400
+$Comp
+L Connector:Raspberry_Pi_2_3 J1
+U 1 1 618CDFEC
+P 2050 4700
+F 0 "J1" H 1400 6000 50  0000 C CNN
+F 1 "Raspberry_Pi_2_3" H 1900 4600 50  0000 C CNN
+F 2 "40pin.SMD.rev:02x20.SMD.pinLocsRev" H 2050 4700 50  0001 C CNN
+F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 2050 4700 50  0001 C CNN
+	1    2050 4700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2850 5600 2850 5650
+Wire Wire Line
+	2850 5650 -550 5650
+Wire Wire Line
+	-550 5650 -550 5600
+Wire Wire Line
+	-550 5500 -550 5550
+Wire Wire Line
+	-550 5550 2850 5550
+Wire Wire Line
+	2850 5550 2850 5500
+Wire Wire Line
+	-550 5200 -550 5250
+Wire Wire Line
+	-550 5250 2850 5250
+Wire Wire Line
+	2850 5250 2850 5200
+Wire Wire Line
+	2850 5300 2850 5350
+Wire Wire Line
+	2850 5350 -550 5350
+Wire Wire Line
+	-550 5350 -550 5300
+Wire Wire Line
+	-550 4500 -550 4550
+Wire Wire Line
+	-550 4550 2850 4550
+Wire Wire Line
+	2850 4550 2850 4500
+Wire Wire Line
+	-550 4400 -550 4450
+Wire Wire Line
+	-550 4450 2850 4450
+Wire Wire Line
+	2850 4450 2850 4400
+Wire Wire Line
+	-550 4300 -550 4350
+Wire Wire Line
+	-550 4350 2850 4350
+Wire Wire Line
+	2850 4350 2850 4300
+Wire Wire Line
+	-550 4200 -550 4250
+Wire Wire Line
+	-550 4250 2850 4250
+Wire Wire Line
+	2850 4250 2850 4200
+Wire Wire Line
+	-550 4000 -550 4050
+Wire Wire Line
+	-550 4050 2850 4050
+Wire Wire Line
+	2850 4050 2850 4000
+Wire Wire Line
+	-150 3400 -50  3400
+Connection ~ -50  3400
+Wire Wire Line
+	-50  3400 50   3400
+Connection ~ 50   3400
+Wire Wire Line
+	50   3400 150  3400
+Connection ~ 150  3400
+Wire Wire Line
+	150  3400 250  3400
+Connection ~ 250  3400
+Wire Wire Line
+	250  3400 350  3400
+Connection ~ 350  3400
+Wire Wire Line
+	350  3400 450  3400
+Connection ~ 450  3400
+Wire Wire Line
+	450  3400 550  3400
+Connection ~ 550  3400
+Wire Wire Line
+	550  3400 1750 3400
+Wire Wire Line
+	350  6000 350  6200
+Wire Wire Line
+	350  6200 1950 6200
+Wire Wire Line
+	1950 6200 1950 6000
 $EndSCHEMATC

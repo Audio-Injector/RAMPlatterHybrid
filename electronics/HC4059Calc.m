@@ -2,9 +2,9 @@ function HC4059Calc
 % 74HC4059 settings calculator
 % Matt Flax <flatmax@>
 % Flatmax (C) 2021
-target=12000;
-mode=4;
-mults=[1 10 100 1000]; 
+target=12000/2;
+mode=2;
+mults=[1 10 100 1000];
 stages=[4 9 9 9]; % stages 1 to 4. Stage 5 is stage 1 div. 2.
 N=mode*sum(mults.*[stages(2:end) floor(stages(1)/2)])+stages(1);
 fprintf("\ntarget = %d     N = %d   target-N = %d\n",target, N, target-N);

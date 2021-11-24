@@ -26,8 +26,8 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-lib_LTLIBRARIES = libSwigCNodejs.la
+lib_LTLIBRARIES = libRAMPlatterHybrid.la
 
-libSwigCNodejs_la_SOURCES = Test.C
-libSwigCNodejs_la_CPPFLAGS = -I$(top_srcdir)/include
-libSwigCNodejs_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
+libRAMPlatterHybrid_la_SOURCES = Audio.C
+libRAMPlatterHybrid_la_CPPFLAGS = -I$(top_srcdir)/include $(GTKIOSTREAM_CFLAGS)
+libRAMPlatterHybrid_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)

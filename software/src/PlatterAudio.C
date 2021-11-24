@@ -26,13 +26,26 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "Test.H"
-#include <stdio.h>
+#include "PlatterAudio.H"
 
-Test::Test(){
-  printf("Test constructed\n");
+template<typename SAMPLE_TYPE, unsigned int FS>
+PlatterAudio<SAMPLE_TYPE, FS>::PlatterAudio(){
+  printf("PlatterAudio constructed\n");
 }
 
-Test::~Test(){
-  printf("Test destructed\n");
+template<typename SAMPLE_TYPE, unsigned int FS>
+PlatterAudio<SAMPLE_TYPE, FS>::~PlatterAudio(){
+  printf("PlatterAudio destructed\n");
 }
+
+template<typename SAMPLE_TYPE, unsigned int FS>
+int PlatterAudio<SAMPLE_TYPE, FS>::loadFile(const std::string fn){
+  int ret=audioFwd.loadFile(fn);
+  if (ret<0)
+    return ret;
+  Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> *aM=&audioRev;
+  *aM=audioFwd.rowwise().reverse();
+  return 0;
+}
+
+template class PlatterAudio<int, 48000>;

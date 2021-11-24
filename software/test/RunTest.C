@@ -26,9 +26,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "Test.H"
+#include "PlatterAudio.H"
 
 int main(int argc, char *argv[]){
-  Test test; // test the construction and destruction of the Test class.
+  {
+    Audio<int> audio; // test the construction and destruction of the Audio class.
+  }
+  printf("\n");
+  PlatterAudio<int, 48000> platterAudio; // test the construction and destruction of the Audio class.
   return 0;
 }

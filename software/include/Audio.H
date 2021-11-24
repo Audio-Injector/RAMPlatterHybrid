@@ -37,7 +37,7 @@
 Inherits an Eigen matrix, where columns are channels and rows are frames (samples).
 */
 template<typename SAMPLE_TYPE>
-class Audio : Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> {
+class Audio : public Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> {
 public:
   /** Constructor
   */
@@ -52,6 +52,6 @@ public:
   \param fn The file to load
   \returns 0 on success, otherwise error
   */
-  int loadAudio(const std::string fn);
+  int loadFile(const std::string fn);
 };
 #endif // AUDIO_H_

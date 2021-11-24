@@ -52,3 +52,5 @@ int Audio<SAMPLE_TYPE>::loadFile(const std::string fn){
     return SoxDebug().evaluateError(ret);
   return ret;
 }
+
+template class Audio<int>;

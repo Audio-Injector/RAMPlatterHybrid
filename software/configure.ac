@@ -33,7 +33,7 @@ m4_define([project_version], [project_current_version.project_revision_version.p
 
 AC_INIT( swig_C++_nodejs, [swig_C++_nodejs_version], [ https://github.com/Audio-Injector/RAMPlatterHybrid/issues ])
 AM_INIT_AUTOMAKE
-AC_CONFIG_SRCDIR([include/Test.H])
+AC_CONFIG_SRCDIR([include/Audio.H])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_PREFIX_DEFAULT(/usr)

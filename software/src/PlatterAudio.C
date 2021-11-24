@@ -44,7 +44,7 @@ int PlatterAudio<SAMPLE_TYPE, FS>::loadFile(const std::string fn){
   if (ret<0)
     return ret;
   Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> *aM=&audioRev;
-  *aM=audioFwd.rowwise().reverse();
+  *aM=audioFwd.colwise().reverse();
   return 0;
 }
 

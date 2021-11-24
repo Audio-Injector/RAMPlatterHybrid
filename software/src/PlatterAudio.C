@@ -41,7 +41,11 @@ PlatterAudio<SAMPLE_TYPE, FS>::~PlatterAudio(){
 template<typename SAMPLE_TYPE, unsigned int FS>
 int PlatterAudio<SAMPLE_TYPE, FS>::loadFile(const std::string fn){
   int ret=audioFwd.loadFile(fn);
-  return ret;
+  if (ret<0)
+    return ret;
+  Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> *aM=&audioRev;
+  *aM=audioFwd.rowwise().reverse();
+  return 0;
 }
 
 template class PlatterAudio<int, 48000>;

@@ -1,4 +1,4 @@
-# Copyright (c) 2017 The Project Foundations Authors. All rights reserved.
+# Copyright (c) 2017-2021 RAM Platter Hybrid Authors. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -31,7 +31,7 @@ m4_define([project_revision_version], [0]) # ++ if API same but src code change
 m4_define([project_age_version], [0]) # ++ if API added since last release, if API removed or changed then age=0
 m4_define([project_version], [project_current_version.project_revision_version.project_age_version])
 
-AC_INIT( swig_C++_nodejs, [swig_C++_nodejs_version], [ https://github.com/madChopsCoderAu/Project Foundations/issues ])
+AC_INIT( swig_C++_nodejs, [swig_C++_nodejs_version], [ https://github.com/Audio-Injector/RAMPlatterHybrid/issues ])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([include/Test.H])
 AC_CONFIG_HEADERS([config.h])

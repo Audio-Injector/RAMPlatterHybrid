@@ -22,3 +22,5 @@ a.out
 stamp-h1
 test/*Test
 m4
+software/test/*Test
+software/swig/*_wrap.cxx

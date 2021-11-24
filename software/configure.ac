@@ -90,6 +90,17 @@ AC_ARG_WITH([swig-include-path],
 [SWIG_INCLUDE_PATH="-I/usr/include"])
 AC_SUBST(SWIG_INCLUDE_PATH)
 
+# eigen3
+PKG_CHECK_MODULES(EIGEN, eigen3 >= 3.0.0,,AC_MSG_ERROR("Eigen3 is required for NeuralNetworks and Sox support - and possibly others"))
+AC_SUBST(EIGEN_CFLAGS)
+AC_SUBST(EIGEN_LIBS)
+AC_DEFINE([EIGEN_FFTW_DEFAULT],[],[Using the FFTW backen with Eigen FFT])
+
+# gtkiostream
+PKG_CHECK_MODULES([GTKIOSTREAM], [gtkIOStream],, [no])
+AC_SUBST([GTKIOSTREAM_CFLAGS])
+AC_SUBST([GTKIOSTREAM_LIBS])
+
 AC_C_INLINE
 AC_FUNC_ERROR_AT_LINE
 

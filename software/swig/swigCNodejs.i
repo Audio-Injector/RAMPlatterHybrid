@@ -28,7 +28,9 @@
 
 %module "swigCNodejs"
 %{
-#include "Test.H"
+#include "PlatterAudio.H"
 %}
 
-%include "Test.H"
+%include "PlatterAudio.H"
+
+%template(intPlatterAudio48k) PlatterAudio<int, 48000>;

@@ -29,7 +29,8 @@
 clean-local:
 	-rm -rf build
 
-nodejs_CPPFLAGS = $(NODE_CFLAGS) -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DBUILDING_NODE_EXTENSION
+nodejs_CPPFLAGS =  $(GTKIOSTREAM_CFLAGS)
+nodejs_CPPFLAGS += $(NODE_CFLAGS) -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DBUILDING_NODE_EXTENSION
 nodejs_CPPFLAGS += -O3  -ffunction-sections -fdata-sections -fno-omit-frame-pointer -fno-rtti -std=gnu++0x
 nodejs_CPPFLAGS += -I$(top_srcdir)/include
 
@@ -48,12 +49,12 @@ if HAVE_LIBNODE
 lib_LTLIBRARIES += libSwigCNodejs.la
 BUILT_SOURCES += swigCNodejs_wrap.cxx
 CLEANFILES += swigCNodejs_wrap.cxx
-swigCNodejs_wrap.cxx: ../include/Test.H
+swigCNodejs_wrap.cxx: ../include/Audio.H ../include/PlatterAudio.H
 endif
 
 libSwigCNodejs_la_SOURCES = swigCNodejs_wrap.cxx
 libSwigCNodejs_la_CPPFLAGS =  $(nodejs_CPPFLAGS)
-libSwigCNodejs_la_LDFLAGS = $(nodejs_LDFLAGS) $(top_builddir)/src/libSwigCNodejs.la
+libSwigCNodejs_la_LDFLAGS = $(nodejs_LDFLAGS) $(top_builddir)/src/libRAMPlatterHybrid.la
 
 all: $(lib_LTLIBRARIES)
 	if [ -e .libs/libSwigCNodejs.so ]; then cp -H .libs/libSwigCNodejs.so .libs/libSwigCNodejs.node; fi

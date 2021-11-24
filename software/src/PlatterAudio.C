@@ -28,11 +28,20 @@
 
 #include "PlatterAudio.H"
 
-int main(int argc, char *argv[]){
-  {
-    Audio<int> audio; // test the construction and destruction of the Audio class.
-  }
-  printf("\n");
-  PlatterAudio<int, 48000> platterAudio; // test the construction and destruction of the Audio class.
-  return 0;
+template<typename SAMPLE_TYPE, unsigned int FS>
+PlatterAudio<SAMPLE_TYPE, FS>::PlatterAudio(){
+  printf("PlatterAudio constructed\n");
 }
+
+template<typename SAMPLE_TYPE, unsigned int FS>
+PlatterAudio<SAMPLE_TYPE, FS>::~PlatterAudio(){
+  printf("PlatterAudio destructed\n");
+}
+
+template<typename SAMPLE_TYPE, unsigned int FS>
+int PlatterAudio<SAMPLE_TYPE, FS>::loadFile(const std::string fn){
+  int ret=audioFwd.loadFile(fn);
+  return ret;
+}
+
+template class PlatterAudio<int, 48000>;

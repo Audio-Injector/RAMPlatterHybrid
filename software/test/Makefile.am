@@ -29,7 +29,8 @@
 CPPFLAGS = -I$(top_srcdir)/include $(GTKIOSTREAM_CFLAGS)
 LDADD =  $(top_builddir)/src/libRAMPlatterHybrid.la $(GTKIOSTREAM_LIBS)
 
-noinst_PROGRAMS = RunTest PlatterAudioTest
+noinst_PROGRAMS = RunTest PlatterAudioTest PlatterALSATest
 
 RunTest_SOURCES = RunTest.C
 PlatterAudioTest_SOURCES = PlatterAudioTest.C
+PlatterALSATest_SOURCES = PlatterALSATest.C

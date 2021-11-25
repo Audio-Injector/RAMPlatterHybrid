@@ -39,6 +39,8 @@ Inherits an Eigen matrix, where columns are channels and rows are frames (sample
 template<typename SAMPLE_TYPE>
 class Audio : public Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> {
 public:
+  long long int n; ///< The index (starting at 0) into the audio Matrix
+
   /** Constructor
   */
   Audio();

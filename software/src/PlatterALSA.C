@@ -31,7 +31,7 @@
 using namespace ALSA;
 
 template<typename SAMPLE_TYPE, unsigned int FS>
-PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(2) {
+PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(2), direction(1) {
   printf("PlatterALSA constructed\n");
 }
 
@@ -78,6 +78,24 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
   }
 
   return 0;
+}
+
+template<typename SAMPLE_TYPE, unsigned int FS>
+int PlatterALSA<SAMPLE_TYPE, FS>::play(){
+  int res=ALSA::changeThreadPriority(-1);
+  if (res<0)
+    return RAMPlatterDebug().evaluateError(res, ". When trying to max out scheduling priority.\n");
+
+  if (!prepared()){
+    printf("ALSA state : %s\n", getStateName());
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_ALSA_STATE_ERROR, ". Expecting prepared state.\n");
+  }
+  int n=0, ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
+  int Nm1=N-1;
+  for (;;(direction)?n+=N:n-=N){
+    printf("%d\t",n);
+    *this<<PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.block(n,0,n+Nm1,ch); // play the audio data
+  }
 }
 
 template class PlatterALSA<int, 48000>;

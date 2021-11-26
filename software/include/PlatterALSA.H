@@ -41,6 +41,8 @@ template<typename SAMPLE_TYPE, unsigned int FS>
 class PlatterALSA : public PlatterAudio<SAMPLE_TYPE, FS>, public ALSA::Playback {
   const unsigned int N; ///< The ALSA period size ot block size (number of frames or samples per channel output each cycle)
   const unsigned int M; ///< The number of periods to use
+
+  int direction; ///< The direction of playback, >0 for forwards, <0 for reverse
 public:
   /** Constructor
   */
@@ -55,5 +57,11 @@ public:
   \param devName The audio device to open.
   */
   int open(const char *devName="default");
+
+  /** Start playing and never stop.
+  Plays and pads zeros when audio isn't available because we have run past the end or before the beginning.
+  \return <0 on error
+  */
+  int play();
 };
 #endif // PLATTERALSA_H_

@@ -32,5 +32,8 @@ int main(int argc, char *argv[]){
   PlatterALSA<int, 48000> platterALSA;
   platterALSA.loadFile(argv[1]);
   platterALSA.open("hw:0,0");
-  return 0;
+  int res=platterALSA.play();
+  if (res<0)
+    printf("Player returned with error\n");
+  return res;
 }

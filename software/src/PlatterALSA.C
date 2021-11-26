@@ -51,11 +51,12 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
   if (sizeof(SAMPLE_TYPE)!=4)
     return RAMPlatterDebug().evaluateError(RAMPLATTER_BYTEDEPTH_ERROR);
 
-  int res;
   int blocking=1; // set to blocking write
   unsigned int ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
 
-  Playback::open(devName, blocking);
+  int res=Playback::open(devName, blocking);
+  if (res<0)
+    return ALSADebug().evaluateError(res);
 
   // set the format, access, sample rate and channel count
   if ((res=setFARC(SND_PCM_FORMAT_S32_LE, SND_PCM_ACCESS_RW_INTERLEAVED, FS, ch))<0)

@@ -31,7 +31,7 @@
 using namespace ALSA;
 
 template<typename SAMPLE_TYPE, unsigned int FS>
-PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(2), direction(1) {
+PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(128), M(2), direction(1) {
   printf("PlatterALSA constructed\n");
 }
 
@@ -51,7 +51,7 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
   if (sizeof(SAMPLE_TYPE)!=4)
     return RAMPlatterDebug().evaluateError(RAMPLATTER_BYTEDEPTH_ERROR);
 
-  int blocking=1; // set to blocking write
+  int blocking=0; // set to blocking write
   unsigned int ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
 
   int res=Playback::open(devName, blocking);
@@ -90,12 +90,20 @@ int PlatterALSA<SAMPLE_TYPE, FS>::play(){
     printf("ALSA state : %s\n", getStateName());
     return RAMPlatterDebug().evaluateError(RAMPLATTER_ALSA_STATE_ERROR, ". Expecting prepared state.\n");
   }
-  int n=0, ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
+  int n=1000000, ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
+  // int step=N*ch;
   int Nm1=N-1;
-  for (;;(direction)?n+=N:n-=N){
-    printf("%d\t",n);
-    *this<<PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.block(n,0,n+Nm1,ch); // play the audio data
+  direction=-1;
+  while (1){
+    if (direction>1) {
+      writeBuf((char*)PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.block(n,0,n+Nm1,ch).data(),N); // play the audio data
+      n+=N;
+    } else {
+      writeBuf((char*)PlatterAudio<SAMPLE_TYPE, FS>::audioRev.block(n,0,n+Nm1,ch).data(),N); // play the audio data
+      n-=N;
+    }
   }
+  return 0;
 }
 
 template class PlatterALSA<int, 48000>;

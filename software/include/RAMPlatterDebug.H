@@ -32,7 +32,8 @@
 #include <Debug.H>
 #include <string>
 
-#define RAMPLATTER_FIRST_ERROR MIN_ERROR_OFFSET-1 ///< Error when libsox couldn't open the input file
+#define RAMPLATTER_BYTEDEPTH_ERROR MIN_ERROR_OFFSET-1
+#define RAMPLATTER_AUDIOEMPTY_ERROR MIN_ERROR_OFFSET-2
 
 /** Class to handle errors
 */
@@ -42,13 +43,14 @@ public:
   */
   RAMPlatterDebug(){
     #ifndef NDEBUG
-			errors[RAMPLATTER_FIRST_ERROR]=std::string("first error holder");
+    errors[RAMPLATTER_BYTEDEPTH_ERROR]=std::string("The word byte depth is incorrect.");
+    errors[RAMPLATTER_AUDIOEMPTY_ERROR]=std::string("The audio hasn't been loaded yet, load audio first.");
     #endif
   }
 
   /** Destructor
   */
-  virtual ~RAMPlatterDebug();
+  virtual ~RAMPlatterDebug(){}
 };
 
 #endif // RAMPLATTERDEBUG_H_

@@ -39,6 +39,8 @@ Inherits an Eigen matrix, where columns are channels and rows are frames (sample
 */
 template<typename SAMPLE_TYPE, unsigned int FS>
 class PlatterALSA : public PlatterAudio<SAMPLE_TYPE, FS>, public ALSA::Playback {
+  const unsigned int N; ///< The ALSA period size ot block size (number of frames or samples per channel output each cycle)
+  const unsigned int M; ///< The number of periods to use
 public:
   /** Constructor
   */
@@ -48,5 +50,10 @@ public:
   */
   virtual ~PlatterALSA();
 
+  /** open the audio device ready for playback.
+  Open in a blocking state.
+  \param devName The audio device to open.
+  */
+  int open(const char *devName="default");
 };
 #endif // PLATTERALSA_H_

@@ -28,14 +28,85 @@
 
 #include "PlatterALSA.H"
 
+using namespace ALSA;
+
 template<typename SAMPLE_TYPE, unsigned int FS>
-PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA(){
+PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(1) {
   printf("PlatterALSA constructed\n");
 }
 
 template<typename SAMPLE_TYPE, unsigned int FS>
 PlatterALSA<SAMPLE_TYPE, FS>::~PlatterALSA(){
   printf("PlatterALSA destructed\n");
+}
+
+template<typename SAMPLE_TYPE, unsigned int FS>
+int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
+  // first check the audio is loaded before opening the audio device
+  if (PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.rows()==0 || PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols()==0)
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_AUDIOEMPTY_ERROR, "forward audio empty.\n");
+  if (PlatterAudio<SAMPLE_TYPE, FS>::audioRev.rows()==0 || PlatterAudio<SAMPLE_TYPE, FS>::audioRev.cols()==0)
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_AUDIOEMPTY_ERROR, "reverse audio empty.\n");
+
+  int res;
+  int blocking=1; // set to blocking write
+  printf("Opening the device %s\n",devName);
+  Playback::open(devName, blocking);
+
+  if ((res=resetParams())<0) // we don't want defaults so reset and refil the params
+  return res;
+
+  // we are setting up for 4 byte audio sample playback - assume fixed, LE
+  if (sizeof(SAMPLE_TYPE)!=4)
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_BYTEDEPTH_ERROR);
+  if ((res=setFormat(SND_PCM_FORMAT_S32_LE))<0)
+    return ALSADebug().evaluateError(res);
+
+  if ((res=setAccess(SND_PCM_ACCESS_RW_INTERLEAVED))<0)
+    return ALSADebug().evaluateError(res);
+
+  unsigned int fs=FS;
+  if (fs!=getSampleRate()){
+    printf("sample rate mismatch, file = %d Hz and ALSA = %d",fs,getSampleRate());
+    if ((res=setSampleRate(fs))<0)
+      return ALSADebug().evaluateError(res);
+    fs=getSampleRate();
+  }
+  printf("Sample Rate %d Hz\n",fs);
+
+  unsigned int ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
+  if ((res=setBufSize(N*ch, M))<0)
+    return ALSADebug().evaluateError(res);
+
+  if ((res=setChannels(ch))<0){
+    printf("Couldn't set the channels to %d\n", ch);
+    return ALSADebug().evaluateError(res);
+  }
+
+  if ((res=setParams())<0)
+    return ALSADebug().evaluateError(res);
+
+  snd_pcm_format_t format;
+  if ((res=getFormat(format))<0)
+    return ALSADebug().evaluateError(res);
+  printf("format %s\n",getFormatName(format));
+  printf("channels %d\n",getChannels());
+  snd_pcm_uframes_t pSize;
+  if ((res=getPeriodSize(&pSize))<0)
+    return ALSADebug().evaluateError(res);
+  printf("period size %ld\n",pSize);
+  printf("block count %d\n",M);
+  printf("latency = %f s\n",(float)pSize/(float)FS);
+  printf("Sample Rate %d Hz\n",FS);
+
+  res=0;
+  if (pSize!=N){
+    printf("Wanted a period size of %d samples, but got %ld samples, error - aborting.\n", N, pSize);
+    res=-1;
+  }
+
+  dumpState();
+  return 0;
 }
 
 template class PlatterALSA<int, 48000>;

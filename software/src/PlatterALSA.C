@@ -47,39 +47,22 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
     return RAMPlatterDebug().evaluateError(RAMPLATTER_AUDIOEMPTY_ERROR, "forward audio empty.\n");
   if (PlatterAudio<SAMPLE_TYPE, FS>::audioRev.rows()==0 || PlatterAudio<SAMPLE_TYPE, FS>::audioRev.cols()==0)
     return RAMPlatterDebug().evaluateError(RAMPLATTER_AUDIOEMPTY_ERROR, "reverse audio empty.\n");
-
-  int res;
-  int blocking=1; // set to blocking write
-  Playback::open(devName, blocking);
-
-  if ((res=resetParams())<0) // we don't want defaults so reset and refil the params
-  return res;
-
   // we are setting up for 4 byte audio sample playback - assume fixed, LE
   if (sizeof(SAMPLE_TYPE)!=4)
     return RAMPlatterDebug().evaluateError(RAMPLATTER_BYTEDEPTH_ERROR);
-  if ((res=setFormat(SND_PCM_FORMAT_S32_LE))<0)
-    return ALSADebug().evaluateError(res);
 
-  if ((res=setAccess(SND_PCM_ACCESS_RW_INTERLEAVED))<0)
-    return ALSADebug().evaluateError(res);
-
-  unsigned int fs=FS;
-  if ((res=setSampleRate(FS))<0)
-    return ALSADebug().evaluateError(res);
-  if (FS!=getSampleRate()){
-    printf("sample rate mismatch, file = %d Hz and ALSA = %d",FS,getSampleRate());
-    return RAMPlatterDebug().evaluateError(RAMPLATTER_FS_ERROR);
-  }
-
+  int res;
+  int blocking=1; // set to blocking write
   unsigned int ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
+
+  Playback::open(devName, blocking);
+
+  // set the format, access, sample rate and channel count
+  if ((res=setFARC(SND_PCM_FORMAT_S32_LE, SND_PCM_ACCESS_RW_INTERLEAVED, FS, ch))<0)
+    return res;
+
   if ((res=setBufSize(N*ch, M))<0)
     return ALSADebug().evaluateError(res);
-
-  if ((res=setChannels(ch))<0){
-    printf("Couldn't set the channels to %d\n", ch);
-    return ALSADebug().evaluateError(res);
-  }
 
   if ((res=setParams())<0)
     return ALSADebug().evaluateError(res);

@@ -29,7 +29,7 @@
 #include "PlatterALSA.H"
 
 int main(int argc, char *argv[]){
-  PlatterALSA<int, 48000> platterALSA;
+  PlatterALSA<int, 96000> platterALSA;
   platterALSA.loadFile(argv[1]);
   platterALSA.open("hw:0,0");
   int res=platterALSA.play();

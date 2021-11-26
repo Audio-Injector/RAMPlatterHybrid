@@ -110,3 +110,4 @@ int PlatterALSA<SAMPLE_TYPE, FS>::play(){
 }
 
 template class PlatterALSA<int, 48000>;
+template class PlatterALSA<int, 96000>;

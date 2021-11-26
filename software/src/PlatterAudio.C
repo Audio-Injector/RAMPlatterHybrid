@@ -49,3 +49,4 @@ int PlatterAudio<SAMPLE_TYPE, FS>::loadFile(const std::string fn){
 }
 
 template class PlatterAudio<int, 48000>;
+template class PlatterAudio<int, 96000>;

@@ -31,7 +31,7 @@
 using namespace ALSA;
 
 template<typename SAMPLE_TYPE, unsigned int FS>
-PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(1) {
+PlatterALSA<SAMPLE_TYPE, FS>::PlatterALSA() : N(16), M(2) {
   printf("PlatterALSA constructed\n");
 }
 
@@ -62,31 +62,21 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
   if ((res=setFARC(SND_PCM_FORMAT_S32_LE, SND_PCM_ACCESS_RW_INTERLEAVED, FS, ch))<0)
     return res;
 
-  if ((res=setBufSize(N*ch, M))<0)
+  if ((res=setBufSize(N, M))<0) // We want M periods of size N samples per channel
     return ALSADebug().evaluateError(res);
 
-  if ((res=setParams())<0)
+  if ((res=setParams())<0) // set the params to the hardware device
     return ALSADebug().evaluateError(res);
 
-  snd_pcm_format_t format;
-  if ((res=getFormat(format))<0)
-    return ALSADebug().evaluateError(res);
-  printf("format %s\n",getFormatName(format));
-  printf("channels %d\n",getChannels());
-  snd_pcm_uframes_t pSize;
-  if ((res=getPeriodSize(&pSize))<0)
-    return ALSADebug().evaluateError(res);
-  printf("period size %ld\n",pSize);
-  printf("block count %d\n",M);
-  printf("latency = %f s\n",(float)pSize/(float)FS);
-  printf("Sample Rate %d Hz\n",FS);
+  // print out the state of ALSA
+  dumpState(); // outputs the current ALSA params
 
-  if (pSize!=N){
-    printf("Wanted a period size of %d samples, but got %ld samples, error - aborting.\n", N, pSize);
+  if (getPeriodSize()!=N || getPeriods()!=M){ // check we have acquired the desired period size
+    printf("Wanted a period size of %d samples, but got %d samples.\n", N, getPeriodSize());
+    printf("Wanted %d periods, but got %d.\n", M, getPeriods());
     return RAMPlatterDebug().evaluateError(RAMPLATTER_BLOCKSIZE_ERROR);
   }
 
-  // dumpState(); // outputs the current ALSA params
   return 0;
 }
 

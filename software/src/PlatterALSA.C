@@ -50,7 +50,6 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
 
   int res;
   int blocking=1; // set to blocking write
-  printf("Opening the device %s\n",devName);
   Playback::open(devName, blocking);
 
   if ((res=resetParams())<0) // we don't want defaults so reset and refil the params
@@ -66,13 +65,12 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
     return ALSADebug().evaluateError(res);
 
   unsigned int fs=FS;
-  if (fs!=getSampleRate()){
-    printf("sample rate mismatch, file = %d Hz and ALSA = %d",fs,getSampleRate());
-    if ((res=setSampleRate(fs))<0)
-      return ALSADebug().evaluateError(res);
-    fs=getSampleRate();
+  if ((res=setSampleRate(FS))<0)
+    return ALSADebug().evaluateError(res);
+  if (FS!=getSampleRate()){
+    printf("sample rate mismatch, file = %d Hz and ALSA = %d",FS,getSampleRate());
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_FS_ERROR);
   }
-  printf("Sample Rate %d Hz\n",fs);
 
   unsigned int ch=PlatterAudio<SAMPLE_TYPE, FS>::audioFwd.cols();
   if ((res=setBufSize(N*ch, M))<0)
@@ -99,13 +97,12 @@ int PlatterALSA<SAMPLE_TYPE, FS>::open(const char *devName){
   printf("latency = %f s\n",(float)pSize/(float)FS);
   printf("Sample Rate %d Hz\n",FS);
 
-  res=0;
   if (pSize!=N){
     printf("Wanted a period size of %d samples, but got %ld samples, error - aborting.\n", N, pSize);
-    res=-1;
+    return RAMPlatterDebug().evaluateError(RAMPLATTER_BLOCKSIZE_ERROR);
   }
 
-  dumpState();
+  // dumpState(); // outputs the current ALSA params
   return 0;
 }
 

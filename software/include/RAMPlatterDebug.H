@@ -34,6 +34,8 @@
 
 #define RAMPLATTER_BYTEDEPTH_ERROR MIN_ERROR_OFFSET-1
 #define RAMPLATTER_AUDIOEMPTY_ERROR MIN_ERROR_OFFSET-2
+#define RAMPLATTER_FS_ERROR MIN_ERROR_OFFSET-3
+#define RAMPLATTER_BLOCKSIZE_ERROR MIN_ERROR_OFFSET-3
 
 /** Class to handle errors
 */
@@ -45,6 +47,8 @@ public:
     #ifndef NDEBUG
     errors[RAMPLATTER_BYTEDEPTH_ERROR]=std::string("The word byte depth is incorrect.");
     errors[RAMPLATTER_AUDIOEMPTY_ERROR]=std::string("The audio hasn't been loaded yet, load audio first.");
+    errors[RAMPLATTER_FS_ERROR]=std::string("The audio hardware's sample rate is incorrect.");
+    errors[RAMPLATTER_BLOCKSIZE_ERROR]=std::string("The ALSA block size is incorrect.");
     #endif
   }
 

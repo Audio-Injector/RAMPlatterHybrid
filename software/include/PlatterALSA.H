@@ -51,7 +51,7 @@ public:
   virtual ~PlatterALSA();
 
   /** open the audio device ready for playback.
-  Open in a blocking state.
+  Open in a blocking state with all HW params set.
   \param devName The audio device to open.
   */
   int open(const char *devName="default");

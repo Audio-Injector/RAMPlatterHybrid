@@ -26,35 +26,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef PLATTERAUDIO_H_
-#define PLATTERAUDIO_H_
+#include "PlatterALSA.H"
 
-#include "Audio.H"
-
-/** Class to hold and manage audio.
-Inherits an Eigen matrix, where columns are channels and rows are frames (samples).
-\param SAMPLE_TYPE The type of the audio samples
-\param FS The hard set sample rate of the audio in Hz
-*/
-template<typename SAMPLE_TYPE, unsigned int FS>
-class PlatterAudio {
-protected:
-  Audio<SAMPLE_TYPE> audioFwd; ///< The forward playing audio
-  Audio<SAMPLE_TYPE> audioRev; ///< The backward playing audio
-public:
-  /** Constructor
-  */
-  PlatterAudio();
-
-  /** Destructor
-  */
-  virtual ~PlatterAudio();
-
-  /** Given a file name, attempt to load ALL of the audio to RAM.
-  Forwards version to the audioFwd, revers version to the audioRev
-  \param fn The file to load
-  \returns 0 on success, otherwise error
-  */
-  int loadFile(const std::string fn);
-};
-#endif // PLATTERAUDIO_H_
+int main(int argc, char *argv[]){
+  PlatterALSA<int, 96000> platterALSA;
+  platterALSA.loadFile(argv[1]);
+  platterALSA.open("hw:0,0");
+  int res=platterALSA.play();
+  if (res<0)
+    printf("Player returned with error\n");
+  return res;
+}

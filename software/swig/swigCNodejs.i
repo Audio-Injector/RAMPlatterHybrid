@@ -31,6 +31,8 @@
 #include "PlatterAudio.H"
 %}
 
+%include "Audio.H"
 %include "PlatterAudio.H"
 
+%template(intAudio) Audio<int>;
 %template(intPlatterAudio48k) PlatterAudio<int, 48000>;

@@ -37,8 +37,10 @@
 Inherits an Eigen matrix, where columns are channels and rows are frames (samples).
 */
 template<typename SAMPLE_TYPE>
-class Audio : public Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic> {
+class Audio : public Eigen::Matrix<SAMPLE_TYPE, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> {
 public:
+  long long int n; ///< The index (starting at 0) into the audio Matrix
+
   /** Constructor
   */
   Audio();

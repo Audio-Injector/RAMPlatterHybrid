@@ -28,6 +28,6 @@
 
 lib_LTLIBRARIES = libRAMPlatterHybrid.la
 
-libRAMPlatterHybrid_la_SOURCES = Audio.C PlatterAudio.C
+libRAMPlatterHybrid_la_SOURCES = Audio.C PlatterAudio.C PlatterALSA.C
 libRAMPlatterHybrid_la_CPPFLAGS = -I$(top_srcdir)/include $(GTKIOSTREAM_CFLAGS)
-libRAMPlatterHybrid_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
+libRAMPlatterHybrid_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE) $(GTKIOSTREAM_LIBS)

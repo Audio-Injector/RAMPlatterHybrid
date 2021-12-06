@@ -26,10 +26,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef PLATTERAUDIO_H_
-#define PLATTERAUDIO_H_
+#ifndef PLATTERALSA_H_
+#define PLATTERALSA_H_
 
-#include "Audio.H"
+#include "PlatterAudio.H"
+#include <ALSA/ALSA.H>
 
 /** Class to hold and manage audio.
 Inherits an Eigen matrix, where columns are channels and rows are frames (samples).
@@ -37,24 +38,30 @@ Inherits an Eigen matrix, where columns are channels and rows are frames (sample
 \param FS The hard set sample rate of the audio in Hz
 */
 template<typename SAMPLE_TYPE, unsigned int FS>
-class PlatterAudio {
-protected:
-  Audio<SAMPLE_TYPE> audioFwd; ///< The forward playing audio
-  Audio<SAMPLE_TYPE> audioRev; ///< The backward playing audio
+class PlatterALSA : public PlatterAudio<SAMPLE_TYPE, FS>, public ALSA::Playback {
+  const unsigned int N; ///< The ALSA period size ot block size (number of frames or samples per channel output each cycle)
+  const unsigned int M; ///< The number of periods to use
+
+  int direction; ///< The direction of playback, >0 for forwards, <0 for reverse
 public:
   /** Constructor
   */
-  PlatterAudio();
+  PlatterALSA();
 
   /** Destructor
   */
-  virtual ~PlatterAudio();
+  virtual ~PlatterALSA();
 
-  /** Given a file name, attempt to load ALL of the audio to RAM.
-  Forwards version to the audioFwd, revers version to the audioRev
-  \param fn The file to load
-  \returns 0 on success, otherwise error
+  /** open the audio device ready for playback.
+  Open in a blocking state with all HW params set.
+  \param devName The audio device to open.
   */
-  int loadFile(const std::string fn);
+  int open(const char *devName="default");
+
+  /** Start playing and never stop.
+  Plays and pads zeros when audio isn't available because we have run past the end or before the beginning.
+  \return <0 on error
+  */
+  int play();
 };
-#endif // PLATTERAUDIO_H_
+#endif // PLATTERALSA_H_

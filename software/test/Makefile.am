@@ -26,8 +26,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-noinst_PROGRAMS = RunTest
+AM_CPPFLAGS = -I$(top_srcdir)/include $(GTKIOSTREAM_CFLAGS)
+LDADD =  $(top_builddir)/src/libRAMPlatterHybrid.la $(GTKIOSTREAM_LIBS)
+
+noinst_PROGRAMS = RunTest PlatterAudioTest PlatterALSATest
 
 RunTest_SOURCES = RunTest.C
-RunTest_CPPFLAGS = -I$(top_srcdir)/include $(GTKIOSTREAM_CFLAGS)
-RunTest_LDADD =  $(top_builddir)/src/libRAMPlatterHybrid.la $(GTKIOSTREAM_LIBS)
+PlatterAudioTest_SOURCES = PlatterAudioTest.C
+PlatterALSATest_SOURCES = PlatterALSATest.C

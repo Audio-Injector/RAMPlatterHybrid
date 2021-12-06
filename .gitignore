@@ -24,3 +24,4 @@ test/*Test
 m4
 software/test/*Test
 software/swig/*_wrap.cxx
+RAMPlatterHybrid.sourcing.ods

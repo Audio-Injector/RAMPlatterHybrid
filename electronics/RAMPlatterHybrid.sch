@@ -237,10 +237,6 @@ Text Label 3450 4850 2    50   ~ 0
 Rin
 Text Label 3450 5050 2    50   ~ 0
 Lin
-Text Label 6850 5800 2    50   ~ 0
-LRCAOut
-Text Label 6850 5450 2    50   ~ 0
-RRCAOut
 $Comp
 L power:GNDA #PWR0117
 U 1 1 619AA9F9
@@ -1020,17 +1016,6 @@ F 3 "" H 8200 3200 50  0001 C CNN
 	1    8200 3200
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+3V3 #PWR0114
-U 1 1 619323EE
-P 8700 2900
-F 0 "#PWR0114" H 8700 2750 50  0001 C CNN
-F 1 "+3V3" H 8750 3000 50  0000 L CNN
-F 2 "" H 8700 2900 50  0001 C CNN
-F 3 "" H 8700 2900 50  0001 C CNN
-	1    8700 2900
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	9050 2900 9050 3200
 Wire Wire Line
@@ -1056,11 +1041,6 @@ Wire Wire Line
 Wire Wire Line
 	8850 2600 8700 2600
 NoConn ~ 7700 2600
-NoConn ~ 7700 2200
-Wire Wire Line
-	7450 2400 7700 2400
-Wire Wire Line
-	7700 2100 7450 2100
 Text Label 8700 2000 0    50   ~ 0
 MCLKo1200
 Text Label 7700 2000 2    50   ~ 0
@@ -1101,7 +1081,7 @@ L Device:R R12
 U 1 1 61BC9996
 P 8850 2750
 F 0 "R12" V 8643 2750 50  0000 C CNN
-F 1 "150k" V 8734 2750 50  0000 C CNN
+F 1 "3k" V 8734 2750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 8780 2750 50  0001 C CNN
 F 3 "~" H 8850 2750 50  0001 C CNN
 	1    8850 2750
@@ -1112,7 +1092,7 @@ L Device:C C23
 U 1 1 61BBC052
 P 9050 2400
 F 0 "C23" H 9165 2446 50  0000 L CNN
-F 1 "20n" H 9165 2355 50  0000 L CNN
+F 1 "1n" H 9165 2355 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 9088 2250 50  0001 C CNN
 F 3 "~" H 9050 2400 50  0001 C CNN
 	1    9050 2400
@@ -1121,25 +1101,24 @@ $EndComp
 $Comp
 L Device:C C20
 U 1 1 61B4B373
-P 7450 2550
-F 0 "C20" H 7565 2596 50  0000 L CNN
-F 1 "2.5n" H 7565 2505 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7488 2400 50  0001 C CNN
-F 3 "~" H 7450 2550 50  0001 C CNN
-	1    7450 2550
+P 7450 2700
+F 0 "C20" H 7565 2746 50  0000 L CNN
+F 1 "2.5n" H 7565 2655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7488 2550 50  0001 C CNN
+F 3 "~" H 7450 2700 50  0001 C CNN
+	1    7450 2700
 	1    0    0    1   
 $EndComp
-Connection ~ 7450 2400
 $Comp
 L Device:R R11
 U 1 1 61B4AD34
-P 7450 2250
-F 0 "R11" V 7243 2250 50  0000 C CNN
-F 1 "10k" V 7334 2250 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7380 2250 50  0001 C CNN
-F 3 "~" H 7450 2250 50  0001 C CNN
-	1    7450 2250
-	-1   0    0    -1  
+P 7400 2400
+F 0 "R11" V 7300 2400 50  0000 C CNN
+F 1 "10k" V 7500 2400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7330 2400 50  0001 C CNN
+F 3 "~" H 7400 2400 50  0001 C CNN
+	1    7400 2400
+	0    -1   1    0   
 $EndComp
 $Comp
 L Device:C C21
@@ -1164,27 +1143,21 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/HEF4046B.pdf" H 8200 2400 
 	1    8200 2400
 	-1   0    0    -1  
 $EndComp
-NoConn ~ 7700 2800
 NoConn ~ 7700 2700
 $Comp
 L power:GND #PWR0113
 U 1 1 61900830
-P 7450 2700
-F 0 "#PWR0113" H 7450 2450 50  0001 C CNN
-F 1 "GND" H 7455 2527 50  0000 C CNN
-F 2 "" H 7450 2700 50  0001 C CNN
-F 3 "" H 7450 2700 50  0001 C CNN
-	1    7450 2700
+P 7450 2850
+F 0 "#PWR0113" H 7450 2600 50  0001 C CNN
+F 1 "GND" H 7455 2677 50  0000 C CNN
+F 2 "" H 7450 2850 50  0001 C CNN
+F 3 "" H 7450 2850 50  0001 C CNN
+	1    7450 2850
 	1    0    0    -1  
 $EndComp
 NoConn ~ 8700 2700
 Wire Wire Line
 	10650 2800 10550 2800
-Wire Wire Line
-	10650 2700 10650 2800
-Connection ~ 10650 2700
-Wire Wire Line
-	10650 2700 10550 2700
 $Comp
 L Jumper:SolderJumper_2_Bridged JP1
 U 1 1 618D8B0B
@@ -1261,8 +1234,6 @@ Text Label 10950 1400 2    50   ~ 0
 LOW
 Text Label 10800 1600 0    50   ~ 0
 HIGH
-Text Notes 9650 3150 1    50   ~ 0
-Calculate the pin settings for the 4059 using\noctave.org running the file HC4059Calc.m
 $Comp
 L power:+3V3 #PWR05
 U 1 1 618D0095
@@ -1274,32 +1245,6 @@ F 3 "" H 10950 2250 50  0001 C CNN
 	1    10950 2250
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	10800 1600 10550 1600
-Wire Wire Line
-	10800 1800 10800 1950
-Wire Wire Line
-	10800 1800 10800 1600
-Connection ~ 10800 1800
-Wire Wire Line
-	10800 1800 10550 1800
-Wire Wire Line
-	10800 1950 10800 2100
-Connection ~ 10800 2100
-Wire Wire Line
-	10800 2100 10550 2100
-Wire Wire Line
-	10800 2200 10800 2100
-Connection ~ 10800 2200
-Wire Wire Line
-	10800 2200 10550 2200
-Wire Wire Line
-	10800 2500 10800 2200
-Connection ~ 10800 2500
-Wire Wire Line
-	10800 2500 10550 2500
-Wire Wire Line
-	10800 2600 10800 2500
 Connection ~ 10800 2600
 Wire Wire Line
 	10800 2600 10550 2600
@@ -1314,8 +1259,6 @@ F 3 "" H 11000 1100 50  0001 C CNN
 	1    11000 1100
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	10650 2400 10650 2700
 Connection ~ 10650 2400
 Wire Wire Line
 	10650 2400 10550 2400
@@ -1325,7 +1268,7 @@ Connection ~ 10650 2300
 Wire Wire Line
 	10650 2300 10550 2300
 Wire Wire Line
-	10650 2000 10650 2300
+	10650 2000 10650 2100
 Connection ~ 10650 2000
 Wire Wire Line
 	10650 2000 10550 2000
@@ -1335,12 +1278,12 @@ Connection ~ 10650 1900
 Wire Wire Line
 	10650 1900 10550 1900
 Wire Wire Line
-	10650 1700 10650 1900
+	10650 1700 10650 1800
 Connection ~ 10650 1700
 Wire Wire Line
 	10650 1700 10550 1700
 Wire Wire Line
-	10650 1500 10650 1700
+	10650 1500 10650 1600
 Wire Wire Line
 	10650 1400 10650 1500
 Connection ~ 10650 1500
@@ -1386,10 +1329,6 @@ F 3 "" H 9750 3800 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10650 3100 10550 3100
-Wire Wire Line
-	10800 2900 10800 2600
-Wire Wire Line
-	10550 2900 10800 2900
 $Comp
 L Device:C C22
 U 1 1 619B8A85
@@ -1436,10 +1375,7 @@ Wire Wire Line
 	10650 3100 10650 3200
 Wire Wire Line
 	10650 3100 10800 3100
-Wire Wire Line
-	10800 3100 10800 2900
 Connection ~ 10650 3100
-Connection ~ 10800 2900
 Wire Wire Line
 	10550 3200 10650 3200
 Connection ~ 10650 3200
@@ -1778,4 +1714,109 @@ Wire Wire Line
 	350  6200 1950 6200
 Wire Wire Line
 	1950 6200 1950 6000
+Text Notes 6750 3700 0    50   ~ 0
+Change this to 5v powered
+Wire Wire Line
+	10800 1600 10800 1950
+Wire Wire Line
+	10800 1950 10800 2600
+Wire Wire Line
+	10650 2400 10650 2500
+Wire Wire Line
+	10550 1600 10650 1600
+Connection ~ 10650 1600
+Wire Wire Line
+	10650 1600 10650 1700
+Wire Wire Line
+	10550 1800 10650 1800
+Connection ~ 10650 1800
+Wire Wire Line
+	10650 1800 10650 1900
+Wire Wire Line
+	10550 2100 10650 2100
+Connection ~ 10650 2100
+Wire Wire Line
+	10650 2100 10650 2200
+Wire Wire Line
+	10550 2200 10650 2200
+Connection ~ 10650 2200
+Wire Wire Line
+	10650 2200 10650 2300
+Wire Wire Line
+	10550 2500 10650 2500
+Connection ~ 10650 2500
+Wire Wire Line
+	10650 2500 10650 2800
+Wire Wire Line
+	10550 2700 10800 2700
+Connection ~ 10800 2700
+Wire Wire Line
+	10800 2700 10800 2600
+Wire Wire Line
+	10800 2700 10800 3100
+Wire Wire Line
+	10650 2800 10650 2900
+Wire Wire Line
+	10650 2900 10550 2900
+Connection ~ 10650 2800
+NoConn ~ 7700 2100
+Text Label 10950 3300 1    50   ~ 0
+Divide_by_600
+Wire Wire Line
+	8700 2900 8850 2900
+Connection ~ 8850 2900
+$Comp
+L Jumper:Jumper_2_Open JP5
+U 1 1 61B5D1B6
+P 7650 3100
+F 0 "JP5" V 7604 3198 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7695 3198 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7650 3100 50  0001 C CNN
+F 3 "~" H 7650 3100 50  0001 C CNN
+	1    7650 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7700 2800 7650 2800
+Wire Wire Line
+	7650 2800 7650 2900
+Wire Wire Line
+	7450 2550 7550 2550
+Wire Wire Line
+	7550 2550 7550 2400
+Wire Wire Line
+	7550 2400 7700 2400
+Connection ~ 7550 2400
+$Comp
+L Jumper:Jumper_2_Open JP4
+U 1 1 61BE7076
+P 7500 2200
+F 0 "JP4" H 7500 1975 50  0000 C CNN
+F 1 "Jumper_2_Open" H 7500 2066 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7500 2200 50  0001 C CNN
+F 3 "~" H 7500 2200 50  0001 C CNN
+	1    7500 2200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7300 2200 7250 2200
+Wire Wire Line
+	7250 2200 7250 2400
+Wire Wire Line
+	7650 3300 7250 3300
+Wire Wire Line
+	7250 3300 7250 2400
+Connection ~ 7250 2400
+Wire Wire Line
+	6250 5500 6650 5500
+Wire Wire Line
+	6650 5500 6650 5450
+Wire Wire Line
+	6650 5450 6850 5450
+Wire Wire Line
+	6250 5700 6450 5700
+Wire Wire Line
+	6450 5700 6450 5800
+Wire Wire Line
+	6450 5800 6850 5800
 $EndSCHEMATC

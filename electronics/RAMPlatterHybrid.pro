@@ -1,4 +1,4 @@
-update=Mon 15 Nov 2021 11:46:24
+update=Fri 03 Dec 2021 14:48:08
 version=1
 last_client=kicad
 [general]
@@ -229,9 +229,9 @@ Enabled=1
 [pcbnew/Layer.F.CrtYd]
 Enabled=1
 [pcbnew/Layer.B.Fab]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.F.Fab]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.Rescue]
 Enabled=0
 [pcbnew/Netclasses]

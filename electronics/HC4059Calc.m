@@ -2,6 +2,7 @@ function HC4059Calc
 % 74HC4059 settings calculator
 % Matt Flax <flatmax@>
 % Flatmax (C) 2021
+  'this script has issues and needs improvement'
 target=12000/2;
 mode=2;
 mults=[1 10 100 1000];

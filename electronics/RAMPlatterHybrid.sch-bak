@@ -237,10 +237,6 @@ Text Label 3450 4850 2    50   ~ 0
 Rin
 Text Label 3450 5050 2    50   ~ 0
 Lin
-Text Label 6850 5800 2    50   ~ 0
-LRCAOut
-Text Label 6850 5450 2    50   ~ 0
-RRCAOut
 $Comp
 L power:GNDA #PWR0117
 U 1 1 619AA9F9

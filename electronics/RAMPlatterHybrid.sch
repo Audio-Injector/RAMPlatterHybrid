@@ -1660,4 +1660,6 @@ Wire Wire Line
 	6450 5700 6450 5800
 Wire Wire Line
 	6450 5800 6850 5800
+Text Notes 1400 1150 0    50   ~ 0
+The approach here will not work.\nSubstitute for this RF setup is on the wiki :\nhttps://github.com/Audio-Injector/RAMPlatterHybrid/wiki/Hardware
 $EndSCHEMATC
